@@ -5,6 +5,7 @@
 
 /build/
 /data/
+/var/
 
 .php_cs.cache
 .idea/
