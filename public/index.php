@@ -6,16 +6,16 @@ require_once '../config/config.php';
 require_once '../config/config_db.php';
 require_once '../vendor/autoload.php';
 
-//use App\Classes\Album\Repository as AlbumRepository;
+use App\Classes\Post\Repository as PostRepository;
 //use App\Classes\Album\Collection as AlbumCollection;
 use App\Controllers\PublicController;
 use App\Classes\Tools\View;
-//use App\Classes\Album\Ui as AlbumUi;
+use App\Classes\Post\Ui as PostUi;
 //use App\Classes\Music\Ui as MusicUi;
 
 // initialisation des variables
-//$title = '';
-//$c = '';
+$title = '';
+$c = '';
 $nav = file_get_contents('../ui/fragments/nav.frg.html');
 $footer = file_get_contents('../ui/fragments/footer.frg.html');
 $skeleton = '../ui/pages/galerie.html.php';
@@ -62,6 +62,35 @@ try {
 
         case 'blog':
             $blog = file_get_contents('../ui/fragments/blog.frg.php');
+            //if (isset($getRequest['id'])) {
+                //$albumId = $getRequest['id'];
+                $ListOfPosts = PostRepository::getAllPosts();
+                var_dump(count($ListOfPosts));
+                die();
+                if (count($ListOfPosts) == 0) {
+                    $c = 'Aucun article';
+                } else {
+                    $i = 0;
+                    foreach ($ListOfPosts as $Post) {
+                        //$ui = PostUi::factory($Post);
+                        /*if ($i < 1) {
+                            $c = '<section id="album_view" class="span6">' . $ui->makePlayer();
+                            $c .= '<ol>';
+
+                            $c .= '<li class="playing">' . $ui->makeHtml() . '</li>';
+                            $i = 1;
+                        } else {
+                            $c .= '<li>' . $ui->makeHtml() . '</li>';
+                        }*/
+                        $c .= 'hello';
+                    }
+                    //$c .= '</ol></section>';
+                }
+
+                //$album = AlbumRepository::read($albumId);
+                //$albumUi = new AlbumUi($album);
+                //$c .= $albumUi->displayAlbumInfos();
+            //}
             break;
         default:
             $title = 'Portfolio';

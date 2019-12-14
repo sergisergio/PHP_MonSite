@@ -4,7 +4,7 @@
             <div class="blog-posts">
                 <div class="box" style="margin-bottom: 50px;">
                     <div class="count">
-                        <h3> articles</h3>
+                        <h3> <?= count($ListOfPosts); ?> articles</h3>
                     </div>
                 </div>
                 <!-- début boucle -->
